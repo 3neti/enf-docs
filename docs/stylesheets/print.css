@@ -1,0 +1,64 @@
+/* PDF-specific styles to eliminate blank pages */
+
+/* Override any inherited page break styles */
+html, body {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+}
+
+/* Eliminate all possible page break sources */
+* {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    page-break-inside: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+    break-inside: auto !important;
+}
+
+/* Target specific elements that commonly cause page breaks */
+h1, h2, h3, h4, h5, h6 {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+}
+
+/* Ensure articles flow together */
+article {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+}
+
+/* Remove breaks from navigation elements */
+nav {
+    display: none !important;
+}
+
+/* Force continuous flow */
+main, section, div {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+}
+
+/* Hide empty elements that might cause spacing */
+:empty {
+    display: none !important;
+}
+
+/* Override Material theme specific rules */
+.md-content,
+.md-main,
+.md-main__inner,
+.md-content__inner {
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    break-before: auto !important;
+    break-after: auto !important;
+}

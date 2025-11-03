@@ -1,0 +1,76 @@
+/* Aggressive PDF styling to completely eliminate blank pages */
+
+@media print {
+    /* Universal page break elimination */
+    *, *:before, *:after {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+        page-break-inside: auto !important;
+        break-before: auto !important;
+        break-after: auto !important;
+        break-inside: auto !important;
+    }
+    
+    /* Target MkDocs-specific elements */
+    .md-main,
+    .md-content,
+    .md-content__inner,
+    article,
+    section,
+    .md-typeset {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+        page-break-inside: auto !important;
+        break-before: auto !important;
+        break-after: auto !important;
+        break-inside: auto !important;
+    }
+    
+    /* Remove breaks around navigation sections */
+    nav, .md-nav {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+        break-before: auto !important;
+        break-after: auto !important;
+    }
+    
+    /* Ensure headings don't force breaks */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-before: auto !important;
+        page-break-after: avoid !important;
+        break-before: auto !important;
+        break-after: avoid !important;
+        orphans: 2;
+        widows: 2;
+    }
+    
+    /* Override any theme-specific page break rules */
+    .md-main__inner {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+    }
+    
+    /* Prevent breaks in content blocks */
+    p, div, span {
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+    
+    /* Only use this class to force a page break if needed */
+    .force-page-break {
+        page-break-before: always !important;
+        break-before: always !important;
+    }
+    
+    /* Hide any empty divs that might be causing spacing issues */
+    div:empty {
+        display: none !important;
+    }
+}
+
+/* Optional: Add some spacing between documents instead of page breaks */
+.document-separator {
+    margin: 3rem 0;
+    border-top: 2px solid #e0e0e0;
+    padding-top: 2rem;
+}
