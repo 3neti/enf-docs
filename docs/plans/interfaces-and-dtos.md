@@ -5,6 +5,143 @@ This document defines the key interfaces and Data Transfer Objects (DTOs) used a
 
 ---
 
+## 📊 System Overview
+
+### 📈 Data Flow Diagram (DFD - Level 1)
+
+```mermaid
+flowchart TD
+    User -->|Login| AuthService[WorkOSAuthService]
+    AuthService -->|Token| TokenService
+    User -->|Upload Document| DocumentService
+    DocumentService --> Storage[Cloud Storage]
+    User -->|Book Session| ScheduleService
+    ScheduleService --> Calendar[Availability DB]
+    User -->|Start Video| VideoService[VideoSessionService]
+    VideoService --> ZoomAPI[(Zoom/Jitsi)]
+    User -->|Start KYC| KYCService[HypervergeKYCService]
+    KYCService --> HypervergeAPI[(Hyperverge)]
+    DocumentService -->|Sign| SignatureService
+    SignatureService --> NotarizationService
+    NotarizationService --> Blockchain[(Optional Blockchain)]
+    NotarizationService --> AuditTrailService
+    AuditTrailService --> AuditDB[(Audit Logs)]
+    PaymentService -->|Payment Result| NotificationService
+    NotificationService -->|Send SMS/Email| User
+```
+
+---
+
+### 🗃️ Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+
+    USER ||--o{ DOCUMENT : owns
+    USER ||--o{ BOOKING : books
+    USER ||--o{ SIGNATURE : signs
+    USER ||--o{ AUDIT_LOG : triggers
+    USER ||--o{ NOTIFICATION : receives
+
+    DOCUMENT ||--o{ SIGNATURE : has
+    DOCUMENT ||--|| NOTARIZATION_LOG : notarized_as
+    DOCUMENT ||--o{ AUDIT_LOG : tracked_by
+
+    BOOKING ||--|| VIDEO_SESSION : uses
+
+    ROLE ||--o{ USER : assigns
+
+    SIGNATURE ||--|| NOTARIZATION_LOG : triggers
+
+    PAYMENT ||--|| USER : pays_for
+    PAYMENT ||--o{ RECEIPT : generates
+
+    NOTARIZATION_LOG ||--o{ AUDIT_LOG : records
+
+    USER {
+        int id PK
+        string name
+        string email
+        string password
+        string role_id FK
+    }
+
+    DOCUMENT {
+        int id PK
+        string title
+        string file_path
+        string mime_type
+        int user_id FK
+    }
+
+    SIGNATURE {
+        int id PK
+        int document_id FK
+        int user_id FK
+        datetime signed_at
+    }
+
+    NOTARIZATION_LOG {
+        int id PK
+        int document_id FK
+        datetime notarized_at
+        string hash
+    }
+
+    AUDIT_LOG {
+        int id PK
+        int user_id FK
+        string action
+        datetime timestamp
+    }
+
+    BOOKING {
+        int id PK
+        int user_id FK
+        datetime start_time
+        datetime end_time
+        string purpose
+    }
+
+    VIDEO_SESSION {
+        int id PK
+        int booking_id FK
+        string join_url
+        string meeting_id
+        string passcode
+    }
+
+    ROLE {
+        int id PK
+        string name
+        json permissions
+    }
+
+    PAYMENT {
+        int id PK
+        int user_id FK
+        float amount
+        string status
+    }
+
+    RECEIPT {
+        int id PK
+        int payment_id FK
+        string reference_no
+        datetime issued_at
+    }
+
+    NOTIFICATION {
+        int id PK
+        int user_id FK
+        string channel
+        string message
+        datetime sent_at
+    }
+```
+
+---
+
 ## 🔐 Authentication
 
 ### Interface: WorkOSAuthServiceInterface
