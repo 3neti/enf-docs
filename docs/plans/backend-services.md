@@ -5,7 +5,21 @@
 
 ---
 
-### 🔐 Authentication & Authorization (OAuth2/JWT)
+### 🔐 Authentication & Authorization (via WorkOS + JWT)
+
+**WorkOS Integration:**
+
+| Type       | Name                                  | Notes |
+|------------|---------------------------------------|-------|
+| Service    | `WorkOSAuthService`, `TokenService`   | WorkOS SSO/OAuth + JWT issuing |
+| Action     | `HandleWorkOSCallback`, `ResolveUserRolesFromDirectory` | Handles login, maps directory groups to roles |
+| Event      | `UserAuthenticated`, `DirectorySynced`| Fired on login and sync |
+| Listener   | `LogAuthentication`, `SyncUserRolesFromGroups` | |
+| Command    | `SyncWorkOSDirectory`                 | Scheduled sync of users/groups |
+| Endpoint   | `GET /api/auth/redirect`, `GET /api/auth/callback` | OAuth2 redirection/callback |
+| Helper     | `auth_helpers.php`                    | `currentTenant()`, `hasRole()` |
+
+**Standard Authentication (Fallback):**
 
 | Type       | Name                                | Notes |
 |------------|-------------------------------------|-------|
@@ -139,7 +153,7 @@
 
 | Concern        | Key Services                        | Key Actions/Jobs            | API Endpoints             |
 |----------------|-------------------------------------|-----------------------------|---------------------------|
-| Auth           | `TokenService`                      | `AuthenticateUser`          | `/api/login`, `/api/token/refresh` |
+| Auth           | `WorkOSAuthService`, `TokenService` | `HandleWorkOSCallback`, `AuthenticateUser` | `/api/auth/redirect`, `/api/auth/callback`, `/api/login` |
 | User Mgmt      | `UserService`, `RoleService`        | `CreateUser`, `AssignRole`  | `/api/users`, `/api/roles` |
 | Documents      | `DocumentService`, `SignatureService` | `UploadDocument`, `SealDocumentJob` | `/api/documents/upload`, `/api/documents/sign` |
 | KYC            | `HypervergeKYCService`              | `StartKYC`, `VerifySelfie`  | `/api/ekyc/start` |
