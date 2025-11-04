@@ -39,6 +39,11 @@ theme:
 nav:
   - Home: notra-landing.md
   - Customer Journey: regulations/CUSTOMER_JOURNEY_MAP.md
+  - Plans:
+    - Development Plan: plans/development-plan.md
+    - Business Plan: plans/business-plan.md
+    - Marketing Plan: plans/marketing-plan.md
+    - Fundraising Plan: plans/fundraising-plan.md
 
 markdown_extensions:
   - admonition
