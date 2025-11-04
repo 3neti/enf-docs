@@ -1,6 +1,8 @@
 
 # Core Modules – Backend Services Breakdown (Laravel 12 API-first)
 
+**[📐 View Interfaces and DTOs Definitions →](interfaces-and-dtos.md)**
+
 ## 🧠 1. Backend Services
 
 ---

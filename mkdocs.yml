@@ -41,6 +41,9 @@ nav:
   - Customer Journey: regulations/CUSTOMER_JOURNEY_MAP.md
   - Plans:
     - Development Plan: plans/development-plan.md
+    - Technical Reference:
+      - Backend Services: plans/backend-services.md
+      - Interfaces & DTOs: plans/interfaces-and-dtos.md
     - Business Plan: plans/business-plan.md
     - Marketing Plan: plans/marketing-plan.md
     - Fundraising Plan: plans/fundraising-plan.md
