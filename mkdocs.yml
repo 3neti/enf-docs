@@ -37,51 +37,8 @@ theme:
     - toc.follow
 
 nav:
-  - Home: index.md
-  - Getting Started:
-    - Overview: guides/overview.md
-    - Quick Start: guides/quickstart.md
-    - Architecture Summary: guides/architecture.md
-  - Business:
-    - Development Plan: business/ENF_PLATFORM_DEVELOPMENT_PLAN.md
-    - Business Model: business/business-model.md
-    - Go-to-Market: business/go-to-market.md
-    - Financial Projections: business/financials.md
-  - Technical:
-    - Architecture Overview: technical/TECHNICAL_ARCHITECTURE.md
-    - Laravel Backend: backend/laravel-architecture.md
-    - API Documentation: backend/api-documentation.md
-    - Database Schema: backend/database-schema.md
-  - Backend Implementation:
-    - Laravel Stack: backend/laravel-stack.md
-    - Commerce Package: backend/commerce-package.md
-    - KYC Package: backend/kyc-package.md
-    - Payment Integration: backend/payment-integration.md
-    - Wallet System: backend/wallet-system.md
-  - Compliance & Regulations:
-    - Supreme Court Rules: regulations/RULES_ON_ELECTRONIC_NOTARIZATION.md
-    - Compliance Requirements: compliance/requirements.md
-    - Data Privacy Act: compliance/data-privacy.md
-    - Supreme Court Reporting: compliance/reporting.md
-  - System Design:
-    - Data Flow Diagrams: regulations/DFD_LEVEL1.md
-    - Detailed DFDs: regulations/DFD_LEVEL2.md
-    - Customer Journey: regulations/CUSTOMER_JOURNEY_MAP.md
-    - Notarization Flow: regulations/DUAL-PATH_CANONICALIZATION_AND_NOTARIZATION_FLOW.md
-  - TRUTH Engine:
-    - Overview: regulations/TRUTH_ENGINE_ENF.md
-    - Canonicalization: regulations/CANONICALIZATION_AND_PDFA_EXPLAINED.md
-    - Document Strategy: regulations/DOCUMENT_INPUT_STRATEGY.md
-  - Implementation Guides:
-    - Setup Guide: guides/setup.md
-    - ENP Onboarding: guides/enp-onboarding.md
-    - Customer Flow: guides/customer-flow.md
-    - Testing Guide: guides/testing.md
-  - API Reference:
-    - Authentication: backend/api/authentication.md
-    - KYC Endpoints: backend/api/kyc.md
-    - Notarization: backend/api/notarization.md
-    - Payments: backend/api/payments.md
+  - Home: notra-landing.md
+  - Customer Journey: regulations/CUSTOMER_JOURNEY_MAP.md
 
 markdown_extensions:
   - admonition
