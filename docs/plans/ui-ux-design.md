@@ -1,5 +1,7 @@
 # 🎨 UI/UX Design
 
+**[📱 View Detailed Wireframes →](wireframes.md)**
+
 ## Overview
 
 Notra's user interface is built with **Vue 3**, **Vuestic UI**, and **Pinia** for state management, providing a modern, responsive experience across all portals.
