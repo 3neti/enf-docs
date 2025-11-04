@@ -1,27 +1,87 @@
-site_name: Electronic Notarization Facility (ENF)
+site_name: ENF Platform Documentation
+site_description: Comprehensive documentation library for the Electronic Notarization Facility platform
+site_url: https://enf.docs
+site_author: 3neti R&D OPC
+
 theme:
   name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.footer
     - content.code.annotate
     - content.code.copy
     - content.code.select
-
-extra_css:
-  - stylesheets/extra.css
-  - stylesheets/print.css
-
-plugins:
-  - search
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+    - toc.follow
 
 nav:
   - Home: index.md
-  - ENF Strategy: STRATEGY_OUTLINE_v3.md
-  - Customer Journey: CUSTOMER_JOURNEY_MAP.md
-  - Notarization Flow: DUAL-PATH_CANONICALIZATION_AND_NOTARIZATION_FLOW.md
+  - Getting Started:
+    - Overview: guides/overview.md
+    - Quick Start: guides/quickstart.md
+    - Architecture Summary: guides/architecture.md
+  - Business:
+    - Development Plan: business/ENF_PLATFORM_DEVELOPMENT_PLAN.md
+    - Business Model: business/business-model.md
+    - Go-to-Market: business/go-to-market.md
+    - Financial Projections: business/financials.md
+  - Technical:
+    - Architecture Overview: technical/TECHNICAL_ARCHITECTURE.md
+    - Laravel Backend: backend/laravel-architecture.md
+    - API Documentation: backend/api-documentation.md
+    - Database Schema: backend/database-schema.md
+  - Backend Implementation:
+    - Laravel Stack: backend/laravel-stack.md
+    - Commerce Package: backend/commerce-package.md
+    - KYC Package: backend/kyc-package.md
+    - Payment Integration: backend/payment-integration.md
+    - Wallet System: backend/wallet-system.md
+  - Compliance & Regulations:
+    - Supreme Court Rules: regulations/RULES_ON_ELECTRONIC_NOTARIZATION.md
+    - Compliance Requirements: compliance/requirements.md
+    - Data Privacy Act: compliance/data-privacy.md
+    - Supreme Court Reporting: compliance/reporting.md
+  - System Design:
+    - Data Flow Diagrams: regulations/DFD_LEVEL1.md
+    - Detailed DFDs: regulations/DFD_LEVEL2.md
+    - Customer Journey: regulations/CUSTOMER_JOURNEY_MAP.md
+    - Notarization Flow: regulations/DUAL-PATH_CANONICALIZATION_AND_NOTARIZATION_FLOW.md
+  - TRUTH Engine:
+    - Overview: regulations/TRUTH_ENGINE_ENF.md
+    - Canonicalization: regulations/CANONICALIZATION_AND_PDFA_EXPLAINED.md
+    - Document Strategy: regulations/DOCUMENT_INPUT_STRATEGY.md
+  - Implementation Guides:
+    - Setup Guide: guides/setup.md
+    - ENP Onboarding: guides/enp-onboarding.md
+    - Customer Flow: guides/customer-flow.md
+    - Testing Guide: guides/testing.md
+  - API Reference:
+    - Authentication: backend/api/authentication.md
+    - KYC Endpoints: backend/api/kyc.md
+    - Notarization: backend/api/notarization.md
+    - Payments: backend/api/payments.md
 
 markdown_extensions:
   - admonition
@@ -33,10 +93,26 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
+      toc_depth: 3
 
-extra_javascript:
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
-  - javascripts/mermaid-init.js
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com

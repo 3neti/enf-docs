@@ -1,0 +1,42 @@
+site_name: Electronic Notarization Facility (ENF)
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/print.css
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - ENF Strategy: STRATEGY_OUTLINE_v3.md
+  - Customer Journey: CUSTOMER_JOURNEY_MAP.md
+  - Notarization Flow: DUAL-PATH_CANONICALIZATION_AND_NOTARIZATION_FLOW.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+  - javascripts/mermaid-init.js
